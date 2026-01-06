@@ -3,13 +3,14 @@ import torch
 import numpy as np
 from torchmetrics.detection.mean_ap import MeanAveragePrecision
 from tqdm import tqdm
-from .annotations import VisDroneClasses
+from .annotations import VisDroneClasses, LabelsConverter
 
 class ObjectDetectionEvaluator:
-    def __init__(self, device='cuda'):
+    def __init__(self, device='cuda', labels_converter=LabelsConverter()):
         self.device = device
         # mAP handles both box overlap and class correctness
         self.metric = MeanAveragePrecision(box_format='xyxy')
+        self.labels_converter = labels_converter
 
     @torch.no_grad()
     def evaluate_mAP(self, model, dataloader):
@@ -25,9 +26,9 @@ class ObjectDetectionEvaluator:
             for box, label in zip(boxes, labels):
                 targets.append({
                     'boxes': box.to(self.device),
-                    'labels': label.to(self.device)
+                    'labels': torch.tensor([self.labels_converter(label.item()) for label in label]).to(self.device)
                 })
-
+                
             # outputs: list of dicts [{'boxes': tensor, 'scores': tensor, 'labels': tensor}]
             outputs = model(images)
 
@@ -49,8 +50,9 @@ class ObjectDetectionEvaluator:
         print("---------------------------\n")
 
 class QualitativeEvaluator:
-    def __init__(self, device='cuda'):
+    def __init__(self, device='cuda', labels_converter=LabelsConverter()):
         self.device = device
+        self.labels_converter = labels_converter
 
         np.random.seed(42)
         self.colors = np.random.randint(0, 255, size=(len(VisDroneClasses), 3), dtype=np.uint8)
@@ -68,7 +70,6 @@ class QualitativeEvaluator:
             for i in range(len(images)):
                 j += 1
                 img_ground_truth = self._populate_image(images[i], boxes_ground_truth[i], labels_ground_truth[i])
-                print(len(boxes_ground_truth[i]), "ground truth boxes at frame", j)
                 cv2.imshow("Ground Truth", img_ground_truth)
 
                 # 2. Extract predictions for this specific image
@@ -95,9 +96,10 @@ class QualitativeEvaluator:
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
 
         for box, label in zip(boxes, labels):
+            label = self.labels_converter(label.item())
             x1, y1, x2, y2 = box.int().cpu().numpy()
-            class_name = VisDroneClasses(label.item()).name
-            color = [int(c) for c in self.colors[label.item() % len(self.colors)]]
+            class_name = VisDroneClasses(label).name
+            color = [int(c) for c in self.colors[label % len(self.colors)]]
 
             cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
             cv2.putText(img, class_name, (x1, y1 - 5), 
