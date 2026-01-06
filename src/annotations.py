@@ -2,9 +2,6 @@ import pandas as pd
 from enum import IntEnum
 from typing import Tuple
 from collections import defaultdict
-import os
-from pathlib import Path
-import cv2
 
 class VisDroneClasses(IntEnum):
     IGNORED = 0

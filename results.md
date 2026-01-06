@@ -4,13 +4,13 @@
 
 ### Out of the box (YOLO class adjustments)
 
-mAP (Mean Average Precision): 0.0645
-mAP@50 (IoU threshold 0.5):  0.1408
-mAP@75 (IoU threshold 0.75): 0.0483
-mAR (Mean Average Recall):    0.0944
-mAP for small objects: 0.0403
-mAP for medium objects: 0.1705
-mAP for large objects: 0.3085
+mAP (Mean Average Precision): 0.0029
+mAP@50 (IoU threshold 0.5):  0.0044
+mAP@75 (IoU threshold 0.75): 0.0032
+mAR (Mean Average Recall):    0.0102
+mAP for small objects: 0.0010
+mAP for medium objects: 0.0020
+mAP for large objects: 0.0073
 
 1. The Critical "Detection Gap"
 
@@ -28,13 +28,13 @@ The most alarming shift is in the mAP@50 (0.1408).
 
 ### With VisDrone classes adjusted
 
-mAP (Mean Average Precision): 0.1187
-mAP@50 (IoU threshold 0.5):  0.2892
-mAP@75 (IoU threshold 0.75): 0.0807
-mAR (Mean Average Recall):    0.1514
-mAP for small objects: 0.0663
-mAP for medium objects: 0.2277
-mAP for large objects: 0.4875
+mAP (Mean Average Precision): 0.0395
+mAP@50 (IoU threshold 0.5):  0.0770
+mAP@75 (IoU threshold 0.75): 0.0354
+mAR (Mean Average Recall):    0.0925
+mAP for small objects: 0.0123
+mAP for medium objects: 0.0469
+mAP for large objects: 0.0726
 
 Localization Quality (@50 vs. @75)
 
@@ -58,13 +58,13 @@ This is the most revealing part of your data:
 
 ### Fine-tuned on VisDrone
 
-mAP (Mean Average Precision): 0.2570
-mAP@50 (IoU threshold 0.5):  0.4022
-mAP@75 (IoU threshold 0.75): 0.2645
-mAR (Mean Average Recall):    0.2943
-mAP for small objects: 0.0520
-mAP for medium objects: 0.1393
-mAP for large objects: 0.8304
+mAP (Mean Average Precision): 0.1863
+mAP@50 (IoU threshold 0.5):  0.3765
+mAP@75 (IoU threshold 0.75): 0.1615
+mAR (Mean Average Recall):    0.2746
+mAP for small objects: 0.0665
+mAP for medium objects: 0.2335
+mAP for large objects: 0.3039
 
 ## Object tracking
 

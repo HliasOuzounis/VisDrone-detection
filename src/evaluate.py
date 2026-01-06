@@ -9,7 +9,7 @@ class ObjectDetectionEvaluator:
     def __init__(self, device='cuda', labels_converter=LabelsConverter()):
         self.device = device
         # mAP handles both box overlap and class correctness
-        self.metric = MeanAveragePrecision(box_format='xyxy')
+        self.metric = MeanAveragePrecision(box_format='xyxy', class_metrics=True)
         self.labels_converter = labels_converter
 
     @torch.no_grad()

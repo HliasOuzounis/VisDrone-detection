@@ -8,12 +8,12 @@ import os
 
 if __name__ == '__main__':
     # annot_files = [
-    #     './data/VisDrone2019-VID-test-dev/annotations/uav0000009_03358_v.txt',
+    #     './data/VisDrone2019-MOT-test-dev/annotations/uav0000009_03358_v.txt',
     # ]
-    annot_dir = './data/VisDrone2019-VID-test-dev/annotations'
+    annot_dir = './data/VisDrone2019-MOT-test-dev/annotations'
     annot_files = [os.path.join(annot_dir, f) for f in os.listdir(annot_dir)]
     
-    images_directory = './data/VisDrone2019-VID-test-dev/sequences'
+    images_directory = './data/VisDrone2019-MOT-test-dev/sequences'
     
     resize = transforms.Compose([
         transforms.ToTensor(),

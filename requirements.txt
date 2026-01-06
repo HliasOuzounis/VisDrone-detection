@@ -1,0 +1,8 @@
+torch
+torchmetrics
+torchvision
+tqdm
+Pillow
+opencv-python
+ultralytics
+pandas

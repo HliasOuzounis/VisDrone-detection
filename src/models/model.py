@@ -40,7 +40,7 @@ class DetectionModel(ABC):
         return self
         
     def __call__(self, batch_image: torch.tensor) -> List[Dict[str, torch.tensor]]:
-        results = self.model(batch_image, conf=self.conf_threshold, iou=self.iou_threshold)
+        results = self.model(batch_image, conf=self.conf_threshold, iou=self.iou_threshold, verbose=False)
         return self._post_processing(results)
     
     def _post_processing(self, predictions):
