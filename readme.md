@@ -1,4 +1,4 @@
-# VisDrone-MOT Object Detection and Tracking
+# VisDrone-MOT Object Detection
 
 This repository contains code and experiments for object detection and tracking on the VisDrone-MOT dataset using YOLOv8.
 
