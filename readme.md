@@ -2,6 +2,14 @@
 
 This repository contains code and experiments for object detection and tracking on the VisDrone-MOT dataset using YOLOv8.
 
+## Installation
+
+The project was developed using Python 3.13. To set up the environment, download the repository and install the required packages using pip:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Dataset
 
 For the dataset, we used the VisDrone-MOT 2019 dataset, which consists of annotated video sequences captured by drones. To download the dataset used for evaluation, please run the `download-VisDrone.py` script. It will create a `data/VisDrone2019-MOT-test-dev` directory to download and extract the necessary files.
