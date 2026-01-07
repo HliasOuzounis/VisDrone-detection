@@ -1,7 +1,6 @@
-data/
+data/VisDrone2019-MOT-test-dev
 __pycache__/
 *.pyc
-*.pt
 .vscode/
 *.zip
 report/

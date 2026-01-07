@@ -6,3 +6,5 @@ Pillow
 opencv-python
 ultralytics
 pandas
+gdown
+matplotlib

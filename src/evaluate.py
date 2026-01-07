@@ -81,11 +81,21 @@ class QualitativeEvaluator:
 
                 cv2.imshow("Detection Preview", img_prediction)
 
-                # Press 'q' to quit or any key to continue to next image
-                if cv2.waitKey(1) & 0xFF == ord('q'):
+                # Press 'q' to quit, 'space' to pause/resume, or any key to continue to next image
+                key = cv2.waitKey(1)
+                if key & 0xFF == ord('q'):
                     cv2.destroyAllWindows()
                     print("Evaluation interrupted by user.")
                     return
+                elif key & 0xFF == ord(' '):
+                    while True:
+                        key = cv2.waitKey(1)
+                        if key & 0xFF == ord(' '):
+                            break
+                # if cv2.waitKey(1) & 0xFF == ord('q'):
+                #     cv2.destroyAllWindows()
+                #     print("Evaluation interrupted by user.")
+                #     return
 
         cv2.destroyAllWindows()
 
